@@ -13,6 +13,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.File;
+import java.nio.file.Files;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -31,7 +32,7 @@ public class CommandExecutorIT {
     @Test
     public void executesCommand() throws Exception {
 
-        scriptFile = File.createTempFile(CommandExecutorIT.class.getName(), ".script");
+        scriptFile = Files.createTempFile(CommandExecutorIT.class.getName(), ".script").toFile();
         scriptFile.deleteOnExit();
         givenExecutor();
 

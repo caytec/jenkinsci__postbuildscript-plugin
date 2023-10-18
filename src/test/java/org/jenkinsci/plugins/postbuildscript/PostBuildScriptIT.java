@@ -177,7 +177,7 @@ public class PostBuildScriptIT {
     }
 
     private void givenOutfile() throws Exception {
-        outFile = File.createTempFile(getClass().getName(), ".out");
+        outFile = Files.createTempFile(getClass().getName(), ".out").toFile();
         outFile.deleteOnExit();
     }
 

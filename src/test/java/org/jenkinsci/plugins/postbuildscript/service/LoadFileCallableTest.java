@@ -8,6 +8,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 import java.io.File;
+import java.nio.file.Files;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.nullValue;
@@ -22,8 +23,7 @@ public class LoadFileCallableTest {
     @Test
     public void fileExists() throws Exception {
 
-        File tempFile = File.createTempFile(LoadFileCallableTest.class.getName(),
-            ".txt");
+        File tempFile = Files.createTempFile(LoadFileCallableTest.class.getName(), ".txt").toFile();
         tempFile.deleteOnExit();
 
         LoadFileCallable callable = new LoadFileCallable(tempFile.getPath(), null);
@@ -36,8 +36,7 @@ public class LoadFileCallableTest {
     @Test
     public void fileExistsInWorkspace() throws Exception {
 
-        File tempFile = File.createTempFile(LoadFileCallableTest.class.getName(),
-            ".txt");
+        File tempFile = Files.createTempFile(LoadFileCallableTest.class.getName(), ".txt").toFile();
         tempFile.deleteOnExit();
 
         FilePath workspace = new FilePath(tempFile.getParentFile());
